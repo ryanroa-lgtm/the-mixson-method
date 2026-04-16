@@ -18,7 +18,7 @@ export function ModelProfile({ model }: { model: Model }) {
           <img
             src={model.heroImage}
             alt={model.name}
-            className="w-full max-h-[80vh] object-cover object-top"
+            className="w-full max-h-[80vh] object-contain"
           />
         )}
       </div>
