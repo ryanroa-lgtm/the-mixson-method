@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, useRef, type FormEvent } from "react";
 
 const genders = ["Male", "Female"] as const;
 
@@ -10,6 +10,26 @@ const photoLabels = [
   "Full Body",
   "Additional (Optional)",
 ];
+
+function compressImage(file: File, maxWidth = 1200, quality = 0.7): Promise<Blob> {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      const ratio = Math.min(maxWidth / img.width, 1);
+      canvas.width = img.width * ratio;
+      canvas.height = img.height * ratio;
+      const ctx = canvas.getContext("2d")!;
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      canvas.toBlob(
+        (blob) => resolve(blob!),
+        "image/jpeg",
+        quality
+      );
+    };
+    img.src = URL.createObjectURL(file);
+  });
+}
 
 export default function SubmissionsPage() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
@@ -21,9 +41,11 @@ export default function SubmissionsPage() {
     null,
     null,
   ]);
+  const filesRef = useRef<(File | null)[]>([null, null, null, null]);
 
   function handleFileChange(index: number, file: File | null) {
     if (!file) return;
+    filesRef.current[index] = file;
     const reader = new FileReader();
     reader.onload = () => {
       setPreviews((prev) => {
@@ -40,7 +62,26 @@ export default function SubmissionsPage() {
     setStatus("sending");
 
     const form = e.currentTarget;
-    const formData = new FormData(form);
+    const formData = new FormData();
+
+    // Add text fields
+    formData.append("name", (form.elements.namedItem("name") as HTMLInputElement).value);
+    formData.append("email", (form.elements.namedItem("email") as HTMLInputElement).value);
+    formData.append("phone", (form.elements.namedItem("phone") as HTMLInputElement).value);
+    formData.append("instagram", (form.elements.namedItem("instagram") as HTMLInputElement).value);
+    formData.append("location", (form.elements.namedItem("location") as HTMLInputElement).value);
+    formData.append("height", (form.elements.namedItem("height") as HTMLInputElement).value);
+    formData.append("gender", (form.elements.namedItem("gender") as HTMLSelectElement).value);
+    formData.append("portfolio", (form.elements.namedItem("portfolio") as HTMLInputElement).value);
+
+    // Compress and add photos
+    for (let i = 0; i < 4; i++) {
+      const file = filesRef.current[i];
+      if (file) {
+        const compressed = await compressImage(file);
+        formData.append(`photo-${i}`, compressed, `photo-${i}.jpg`);
+      }
+    }
 
     try {
       const res = await fetch("/api/submissions", {
@@ -51,6 +92,7 @@ export default function SubmissionsPage() {
       setStatus("sent");
       form.reset();
       setPreviews([null, null, null, null]);
+      filesRef.current = [null, null, null, null];
     } catch {
       setStatus("error");
     }
