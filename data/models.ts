@@ -58,7 +58,7 @@ export const models: Model[] = [
       "/models/andrew/digitals/JMIX6797.jpg",
     ],
     polaroids: [],
-    videos: ["/models/andrew/digitals/AndrewVideo.mp4"],
+    videos: [],
   },
   {
     slug: "cade",
@@ -97,7 +97,7 @@ export const models: Model[] = [
       "/models/cade/digitals/IMG_7447.jpeg",
     ],
     polaroids: [],
-    videos: ["/models/cade/digitals/RunwayAudition.mp4"],
+    videos: [],
   },
   {
     slug: "dylan",
@@ -136,11 +136,7 @@ export const models: Model[] = [
       "/models/dylan/digitals/JMIX5751.jpg",
     ],
     polaroids: [],
-    videos: [
-      "/models/dylan/photos/DylanVideo.mp4",
-      "/models/dylan/digitals/DylanVideo.mp4",
-      "/models/dylan/digitals/RunwayVID2.mp4",
-    ],
+    videos: [],
   },
   {
     slug: "john-l",
@@ -262,7 +258,7 @@ export const models: Model[] = [
       "/models/logan/digitals/JMIX4976.jpg",
     ],
     polaroids: [],
-    videos: ["/models/logan/digitals/LoganVideo.mp4"],
+    videos: [],
   },
   {
     slug: "luis",
@@ -300,10 +296,7 @@ export const models: Model[] = [
       "/models/luis/digitals/JMIX8971.jpg",
     ],
     polaroids: [],
-    videos: [
-      "/models/luis/digitals/LuisVideo.mp4",
-      "/models/luis/digitals/Runway.mp4",
-    ],
+    videos: [],
   },
   {
     slug: "steven",
@@ -341,10 +334,7 @@ export const models: Model[] = [
       "/models/steven/digitals/JMIX6998.jpg",
     ],
     polaroids: [],
-    videos: [
-      "/models/steven/digitals/StevenVideo.mp4",
-      "/models/steven/photos/RunwayPractice.mp4",
-    ],
+    videos: [],
   },
 
   // ──────────────── WOMEN ────────────────
@@ -376,7 +366,7 @@ export const models: Model[] = [
     ],
     digitals: [],
     polaroids: [],
-    videos: ["/models/aubrey-fallyer/digitals/AubreyVideo.mp4"],
+    videos: [],
   },
   {
     slug: "delaney-faith",
@@ -410,10 +400,7 @@ export const models: Model[] = [
       "/models/delaney-faith/digitals/JMIX7609.jpg",
     ],
     polaroids: [],
-    videos: [
-      "/models/delaney-faith/digitals/DelaneyVideo.mp4",
-      "/models/delaney-faith/photos/Runway.mov",
-    ],
+    videos: [],
   },
   {
     slug: "kat-amoedo",
@@ -451,7 +438,7 @@ export const models: Model[] = [
       "/models/kat-amoedo/digitals/KatSwimDigitals2.jpg",
     ],
     polaroids: [],
-    videos: ["/models/kat-amoedo/digitals/Runway.mp4"],
+    videos: [],
   },
   {
     slug: "simone-beirne",
@@ -490,7 +477,7 @@ export const models: Model[] = [
       "/models/simone-beirne/digitals/DigitalsMixson043.jpg",
     ],
     polaroids: [],
-    videos: ["/models/simone-beirne/digitals/SimoneVideo.mp4"],
+    videos: [],
   },
 ];
 
