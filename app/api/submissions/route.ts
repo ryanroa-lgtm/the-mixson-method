@@ -32,7 +32,7 @@ export async function POST(request: Request) {
   const resend = new Resend(process.env.RESEND_API_KEY);
 
   try {
-    await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: "The Mixson Method <onboarding@resend.dev>",
       to: "themixsonmethod@gmail.com",
       replyTo: email,
@@ -52,8 +52,14 @@ export async function POST(request: Request) {
       attachments,
     });
 
+    if (error) {
+      console.error("Resend error:", error);
+      return Response.json({ error: error.message }, { status: 500 });
+    }
+
     return Response.json({ success: true });
-  } catch {
+  } catch (err) {
+    console.error("Submission error:", err);
     return Response.json(
       { error: "Failed to send submission." },
       { status: 500 }
