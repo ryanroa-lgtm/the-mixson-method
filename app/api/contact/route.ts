@@ -11,7 +11,7 @@ export async function POST(request: Request) {
 
   try {
     await resend.emails.send({
-      from: "The Mixson Method <onboarding@resend.dev>",
+      from: "The Mixson Method <no-reply@themixsonmethod.com>",
       to: "themixsonmethod@gmail.com",
       replyTo: email,
       subject: `[${subject}] from ${name}`,
