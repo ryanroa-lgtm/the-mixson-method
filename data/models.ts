@@ -83,6 +83,7 @@ export const models: Model[] = [
       "/models/cade/photos/Untitled2.jpg",
       "/models/cade/photos/Untitled3.jpg",
       "/models/cade/photos/Untitled4.jpg",
+      "/models/cade/photos/4448172063779796668.jpg",
     ],
     digitals: [
       "/models/cade/digitals/IMG_7434.jpeg",
