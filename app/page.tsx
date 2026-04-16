@@ -1,38 +1,17 @@
-"use client";
-
-import { useEffect, useState } from "react";
-
-const heroImages = [
-  "/hero/1970-01-21-082505542.jpg",
-  "/hero/1970-01-21-082505680.jpg",
-];
-
 export default function Home() {
-  const [current, setCurrent] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % heroImages.length);
-    }, 6000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <section className="relative flex min-h-[calc(100vh-73px)] items-center justify-center">
-      {/* Hero background images */}
-      {heroImages.map((src, i) => (
-        <div
-          key={src}
-          className="absolute inset-0 transition-opacity duration-[2000ms] ease-in-out"
-          style={{ opacity: i === current ? 1 : 0 }}
-        >
-          <img
-            src={src}
-            alt="The Mixson Method"
-            className="w-full h-full object-cover"
-          />
-        </div>
-      ))}
+      {/* Hero background video */}
+      <div className="absolute inset-0">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+          src="/hero/2026-04-16-113024286.mp4"
+        />
+      </div>
       <div className="absolute inset-0 bg-black/40" />
 
       <div className="relative z-10 text-center px-6">
