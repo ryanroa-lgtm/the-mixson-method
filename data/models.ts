@@ -35,7 +35,7 @@ export const models: Model[] = [
       { label: "Shoe", value: "13" },
     ],
     heroImage: "/models/andrew/hero.png",
-    cardImage: "/models/andrew/hero.png",
+    cardImage: "/models/andrew/photos/andrew-31.jpg",
     gallery: [
       "/models/andrew/photos/andrew-31.jpg",
       "/models/andrew/photos/andrew-46.jpg",
@@ -75,7 +75,7 @@ export const models: Model[] = [
       { label: "Shoe", value: "12" },
     ],
     heroImage: "/models/cade/hero.png",
-    cardImage: "/models/cade/hero.png",
+    cardImage: "/models/cade/photos/CadeUnderwear.jpg",
     gallery: [
       "/models/cade/photos/CadeUnderwear.jpg",
       "/models/cade/photos/Untitled.jpg",
@@ -114,7 +114,7 @@ export const models: Model[] = [
       { label: "Shoe", value: "11.5" },
     ],
     heroImage: "/models/dylan/hero.png",
-    cardImage: "/models/dylan/hero.png",
+    cardImage: "/models/dylan/photos/Dylan2.jpg",
     gallery: [
       "/models/dylan/photos/HeadshotDylan.jpg",
       "/models/dylan/photos/DylanSuit.jpg",
@@ -152,7 +152,7 @@ export const models: Model[] = [
       { label: "Shoe", value: "10.5" },
     ],
     heroImage: "/models/john-l/hero.png",
-    cardImage: "/models/john-l/hero.png",
+    cardImage: "/models/john-l/photos/JlivelyTest-2.jpg",
     gallery: [
       "/models/john-l/photos/JlivelyTest-2.jpg",
       "/models/john-l/photos/JlivelyTest-8.jpg",
@@ -194,7 +194,7 @@ export const models: Model[] = [
       { label: "Shoe", value: "12 / EU45" },
     ],
     heroImage: "/models/john-w/hero.png",
-    cardImage: "/models/john-w/hero.png",
+    cardImage: "/models/john-w/photos/JWalkerTest.jpg",
     gallery: [
       "/models/john-w/photos/JWalkerTest.jpg",
       "/models/john-w/photos/JWalkerTest_35.jpg",
@@ -235,7 +235,7 @@ export const models: Model[] = [
       { label: "Shoe", value: "11" },
     ],
     heroImage: "/models/logan/hero.png",
-    cardImage: "/models/logan/hero.png",
+    cardImage: "/models/logan/photos/JMIX5004.jpg",
     gallery: [
       "/models/logan/photos/JMIX5004.jpg",
       "/models/logan/photos/JMIX5031.jpg",
@@ -274,7 +274,7 @@ export const models: Model[] = [
       { label: "Shoe", value: "9.5 / EU43" },
     ],
     heroImage: "/models/luis/hero.png",
-    cardImage: "/models/luis/hero.png",
+    cardImage: "/models/luis/photos/LRamosTest.jpg",
     gallery: [
       "/models/luis/photos/LRamosTest.jpg",
       "/models/luis/photos/LRamosTest_8.jpg",
@@ -313,7 +313,7 @@ export const models: Model[] = [
       { label: "Shoe", value: "11 / EU44" },
     ],
     heroImage: "/models/steven/hero.png",
-    cardImage: "/models/steven/hero.png",
+    cardImage: "/models/steven/photos/StevenG.jpg",
     gallery: [
       "/models/steven/photos/StevenG.jpg",
       "/models/steven/photos/StevenGSht2.jpg",
@@ -353,7 +353,7 @@ export const models: Model[] = [
       { label: "Shoe", value: "9.5" },
     ],
     heroImage: "/models/aubrey-fallyer/hero.png",
-    cardImage: "/models/aubrey-fallyer/hero.png",
+    cardImage: "/models/aubrey-fallyer/photos/AubreyInk5.jpg",
     gallery: [
       "/models/aubrey-fallyer/photos/AubreyInk5.jpg",
       "/models/aubrey-fallyer/photos/AubreyInk14.jpg",
@@ -382,7 +382,7 @@ export const models: Model[] = [
       { label: "Shoe", value: "10" },
     ],
     heroImage: "/models/delaney-faith/hero.png",
-    cardImage: "/models/delaney-faith/hero.png",
+    cardImage: "/models/delaney-faith/photos/144A0707.jpeg",
     gallery: [
       "/models/delaney-faith/photos/IMG-7214.jpg",
       "/models/delaney-faith/photos/IMG-7209.jpg",
@@ -417,7 +417,7 @@ export const models: Model[] = [
       { label: "Shoe", value: "8" },
     ],
     heroImage: "/models/kat-amoedo/hero.png",
-    cardImage: "/models/kat-amoedo/hero.png",
+    cardImage: "/models/kat-amoedo/photos/KatTest.jpg",
     gallery: [
       "/models/kat-amoedo/photos/KatTest.jpg",
       "/models/kat-amoedo/photos/KatTest2.jpg",
@@ -454,7 +454,7 @@ export const models: Model[] = [
       { label: "Shoe", value: "9" },
     ],
     heroImage: "/models/simone-beirne/hero.png",
-    cardImage: "/models/simone-beirne/hero.png",
+    cardImage: "/models/simone-beirne/photos/SimoneTest.jpeg",
     gallery: [
       "/models/simone-beirne/photos/SimoneTest.jpeg",
       "/models/simone-beirne/photos/CelesteBurns002.jpg",
