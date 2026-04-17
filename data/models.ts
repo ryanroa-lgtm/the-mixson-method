@@ -75,7 +75,7 @@ export const models: Model[] = [
       { label: "Eyes", value: "Hazel" },
       { label: "Hair", value: "Brown" },
       { label: "Shoe", value: "12" },
-      { label: "Based In", value: "Jacksonville Beach, FL" },
+      { label: "Based In", value: "Denver, CO" },
       { label: "Travel", value: "Nationwide + International" },
     ],
     heroImage: "/models/cade/hero.png",
