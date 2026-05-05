@@ -6,7 +6,7 @@ export interface Stat {
 export interface Model {
   slug: string;
   name: string;
-  category: "men" | "women";
+  category: "men" | "women" | "development";
   stats: Stat[];
   // Images — swap these placeholders for real paths in /public
   heroImage: string;
@@ -274,7 +274,7 @@ export const models: Model[] = [
   {
     slug: "steven",
     name: "Steven",
-    category: "men",
+    category: "development",
     stats: [
       { label: "Height", value: "6'3\"" },
       { label: "Chest", value: "43\"" },
@@ -464,7 +464,7 @@ export const models: Model[] = [
   },
 ];
 
-export function getModelsByCategory(category: "men" | "women") {
+export function getModelsByCategory(category: "men" | "women" | "development") {
   return models.filter((m) => m.category === category);
 }
 
