@@ -320,7 +320,7 @@ export const models: Model[] = [
   },
   {
     slug: "nick",
-    name: "Nick",
+    name: "Nick King",
     category: "men",
     stats: [
       { label: "Height", value: "6'1\"" },
