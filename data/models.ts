@@ -16,6 +16,11 @@ export interface Model {
   polaroids: string[];
   // Optional videos — self-hosted mp4 paths or embed URLs
   videos: string[];
+  // Featured talent fields
+  featured?: boolean;
+  subtitle?: string;
+  bio?: string;
+  bookingUrl?: string;
 }
 
 export const models: Model[] = [
@@ -407,6 +412,38 @@ export const models: Model[] = [
   },
 
   // ──────────────── WOMEN ────────────────
+  {
+    slug: "chance-gwyen",
+    name: "Chance Gwyen",
+    category: "women",
+    featured: true,
+    subtitle: "International Model & Runway Coach",
+    bio: "International model, runway coach, and pageant titleholder Chance Gwyen brings strength, elegance, and presence to every stage she steps onto. With experience spanning London Fashion Week, New York Fashion Week, Miami Swim Week, and more, she is known for her commanding runway walk, polished professionalism, and ability to transition effortlessly between editorial, high fashion, fitness, and commercial brand work.\n\nBeyond the runway, Chance is a respected industry leader — serving as a runway coach, show director, and head judge within the fitness and pageant industries. Her blend of confidence, discipline, and femininity has made her a standout both in front of the camera and behind the scenes.\n\nWhether closing a couture show or mentoring the next generation of models, Chance embodies modern elegance with undeniable stage presence.",
+    bookingUrl: "https://calendly.com/chancegwyen",
+    stats: [
+      { label: "Height", value: "5'10.5\"" },
+      { label: "Bust", value: "33\"" },
+      { label: "Waist", value: "25\"" },
+      { label: "Hips", value: "35\"" },
+      { label: "Dress", value: "2/4" },
+      { label: "Eyes", value: "Hazel" },
+      { label: "Hair", value: "Blonde" },
+      { label: "Shoe", value: "9.5" },
+    ],
+    heroImage: "/models/chance-gwyen/hero.png",
+    cardImage: "/models/chance-gwyen/hero.png",
+    gallery: [
+      "/models/chance-gwyen/photos/ChanceEditorial.jpg",
+      "/models/chance-gwyen/photos/GwyenVogue.jpg",
+      "/models/chance-gwyen/photos/Runway1.jpg",
+      "/models/chance-gwyen/photos/Runway2.jpg",
+      "/models/chance-gwyen/photos/Runway3.jpg",
+      "/models/chance-gwyen/photos/SwimLook.jpg",
+    ],
+    digitals: [],
+    polaroids: [],
+    videos: [],
+  },
   {
     slug: "aubrey-fallyer",
     name: "Aubrey Fallyer",

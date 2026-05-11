@@ -13,20 +13,55 @@ export function ModelProfile({ model }: { model: Model }) {
       </Link>
 
       {/* Hero */}
-      <div className="w-full mb-12 overflow-hidden">
-        {model.heroImage && (
+      {model.featured ? (
+        <div className="relative w-full mb-12 overflow-hidden">
           <img
             src={model.heroImage}
             alt={model.name}
-            className="w-full max-h-[80vh] object-contain"
+            className="w-full max-h-[85vh] object-contain"
           />
-        )}
-      </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent flex items-end justify-center pb-12">
+            <div className="text-center">
+              <h1 className="font-heading text-4xl md:text-6xl tracking-wide uppercase text-white mb-3">
+                {model.name}
+              </h1>
+              {model.subtitle && (
+                <p className="text-white/70 text-sm md:text-base tracking-widest uppercase">
+                  {model.subtitle}
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="w-full mb-12 overflow-hidden">
+          {model.heroImage && (
+            <img
+              src={model.heroImage}
+              alt={model.name}
+              className="w-full max-h-[80vh] object-contain"
+            />
+          )}
+        </div>
+      )}
 
-      {/* Name */}
-      <h1 className="font-heading text-4xl md:text-5xl tracking-wide uppercase mb-12">
-        {model.name}
-      </h1>
+      {/* Name (non-featured only — featured has it on the hero) */}
+      {!model.featured && (
+        <h1 className="font-heading text-4xl md:text-5xl tracking-wide uppercase mb-12">
+          {model.name}
+        </h1>
+      )}
+
+      {/* Bio (featured only) */}
+      {model.bio && (
+        <section className="mb-16 max-w-3xl">
+          <div className="space-y-4 text-base leading-relaxed text-muted">
+            {model.bio.split("\n\n").map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Stats */}
       {model.stats.length > 0 && (
@@ -46,7 +81,7 @@ export function ModelProfile({ model }: { model: Model }) {
       {model.gallery.length > 0 && (
         <section className="mb-16">
           <h2 className="font-heading text-2xl tracking-wide uppercase mb-8">
-            Photos
+            Portfolio
           </h2>
           <div className="columns-2 md:columns-3 gap-4 space-y-4">
             {model.gallery.map((src, i) =>
@@ -115,6 +150,44 @@ export function ModelProfile({ model }: { model: Model }) {
                 />
               ) : null
             )}
+          </div>
+        </section>
+      )}
+
+      {/* Booking CTA (featured only) */}
+      {model.bookingUrl && (
+        <section className="mb-16 text-center border-t border-border pt-16">
+          <a
+            href={model.bookingUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-foreground text-white px-12 py-4 text-sm uppercase tracking-widest hover:bg-neutral-700 transition-colors mb-8"
+          >
+            Book {model.name.split(" ")[0]}
+          </a>
+          <div className="flex items-center justify-center gap-8 text-sm text-muted">
+            <a
+              href="mailto:themixsonmethod@gmail.com"
+              className="hover:text-foreground transition-colors"
+            >
+              themixsonmethod@gmail.com
+            </a>
+            <a
+              href="https://www.instagram.com/themixsonmethod/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground transition-colors"
+            >
+              @themixsonmethod
+            </a>
+            <a
+              href="https://www.instagram.com/chancegwyen/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground transition-colors"
+            >
+              @chancegwyen
+            </a>
           </div>
         </section>
       )}
