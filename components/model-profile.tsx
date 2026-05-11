@@ -13,44 +13,27 @@ export function ModelProfile({ model }: { model: Model }) {
       </Link>
 
       {/* Hero */}
-      {model.featured ? (
-        <div className="relative w-full mb-12 overflow-hidden">
+      <div className="w-full mb-8 overflow-hidden">
+        {model.heroImage && (
           <img
             src={model.heroImage}
             alt={model.name}
-            className="w-full max-h-[85vh] object-contain"
+            className={`w-full ${model.featured ? "max-h-[85vh]" : "max-h-[80vh]"} object-contain`}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent flex items-end justify-center pb-12">
-            <div className="text-center">
-              <h1 className="font-heading text-4xl md:text-6xl tracking-wide uppercase text-white mb-3">
-                {model.name}
-              </h1>
-              {model.subtitle && (
-                <p className="text-white/70 text-sm md:text-base tracking-widest uppercase">
-                  {model.subtitle}
-                </p>
-              )}
-            </div>
-          </div>
-        </div>
-      ) : (
-        <div className="w-full mb-12 overflow-hidden">
-          {model.heroImage && (
-            <img
-              src={model.heroImage}
-              alt={model.name}
-              className="w-full max-h-[80vh] object-contain"
-            />
-          )}
-        </div>
-      )}
+        )}
+      </div>
 
-      {/* Name (non-featured only — featured has it on the hero) */}
-      {!model.featured && (
-        <h1 className="font-heading text-4xl md:text-5xl tracking-wide uppercase mb-12">
+      {/* Name + subtitle */}
+      <div className={model.featured ? "mb-12 text-center" : "mb-12"}>
+        <h1 className="font-heading text-4xl md:text-5xl tracking-wide uppercase">
           {model.name}
         </h1>
-      )}
+        {model.featured && model.subtitle && (
+          <p className="text-muted text-sm md:text-base tracking-widest uppercase mt-3">
+            {model.subtitle}
+          </p>
+        )}
+      </div>
 
       {/* Bio (featured only) */}
       {model.bio && (

@@ -430,7 +430,7 @@ export const models: Model[] = [
       { label: "Hair", value: "Blonde" },
       { label: "Shoe", value: "9.5" },
     ],
-    heroImage: "/models/chance-gwyen/hero.png",
+    heroImage: "/models/chance-gwyen/hero-clean.png",
     cardImage: "/models/chance-gwyen/hero.png",
     gallery: [
       "/models/chance-gwyen/photos/ChanceEditorial.jpg",
