@@ -25,9 +25,11 @@ export function ModelCard({ model }: { model: Model }) {
           />
         )}
       </div>
-      <p className="font-heading text-lg tracking-wide text-center uppercase group-hover:text-muted transition-colors">
-        {model.name}
-      </p>
+      {!model.cardImage.endsWith(".png") && (
+        <p className="font-heading text-lg tracking-wide text-center uppercase group-hover:text-muted transition-colors">
+          {model.name}
+        </p>
+      )}
     </a>
   );
 }
