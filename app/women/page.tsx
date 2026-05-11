@@ -31,18 +31,6 @@ export default function WomenPage() {
                   alt={m.name}
                   className="w-full transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black/30 flex items-end justify-center pb-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div className="text-center">
-                    <p className="font-heading text-2xl md:text-3xl tracking-wide uppercase text-white">
-                      {m.name}
-                    </p>
-                    {m.subtitle && (
-                      <p className="text-white/70 text-sm tracking-widest uppercase mt-2">
-                        {m.subtitle}
-                      </p>
-                    )}
-                  </div>
-                </div>
               </div>
             </Link>
           ))}
