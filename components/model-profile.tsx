@@ -37,8 +37,8 @@ export function ModelProfile({ model }: { model: Model }) {
 
       {/* Bio (featured only) */}
       {model.bio && (
-        <section className="mb-16 max-w-3xl">
-          <div className="space-y-4 text-base leading-relaxed text-muted">
+        <section className="mb-16 max-w-3xl mx-auto">
+          <div className="space-y-4 text-base leading-relaxed text-muted text-center">
             {model.bio.split("\n\n").map((p, i) => (
               <p key={i}>{p}</p>
             ))}
