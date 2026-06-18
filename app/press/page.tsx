@@ -1,13 +1,13 @@
 import { PressSlideshow } from "@/components/press-slideshow";
 
 const logos = [
-  { src: "/press/logos/elle-china.jpg", alt: "Elle China" },
-  { src: "/press/logos/cosmopolitan-japan.jpg", alt: "Cosmopolitan Japan" },
-  { src: "/press/logos/us-national-times.jpg", alt: "US National Times" },
-  { src: "/press/logos/american-times-reporter.jpg", alt: "American Times Reporter" },
-  { src: "/press/logos/fox-21.jpg", alt: "FOX 21" },
-  { src: "/press/logos/florida-culture-times.jpg", alt: "Florida Culture Times" },
-  { src: "/press/logos/ein-presswire.jpg", alt: "EIN Presswire" },
+  { src: "/press/logos/elle-china.svg", alt: "Elle China" },
+  { src: "/press/logos/cosmopolitan-japan.svg", alt: "Cosmopolitan Japan" },
+  { src: "/press/logos/us-national-times.svg", alt: "US National Times" },
+  { src: "/press/logos/american-times-reporter.svg", alt: "American Times Reporter" },
+  { src: "/press/logos/fox-21.svg", alt: "FOX 21" },
+  { src: "/press/logos/florida-culture-times.svg", alt: "Florida Culture Times" },
+  { src: "/press/logos/ein-presswire.svg", alt: "EIN Presswire" },
 ];
 
 // Interleaved round-robin so no two images from the same publication are
