@@ -21,6 +21,7 @@ export interface Model {
   subtitle?: string;
   bio?: string;
   bookingUrl?: string;
+  instagram?: string;
 }
 
 export const models: Model[] = [
@@ -314,6 +315,48 @@ export const models: Model[] = [
     polaroids: [],
     videos: [],
   },
+  {
+    slug: "nathan-mander",
+    name: "Nathan Mander",
+    category: "men",
+    featured: true,
+    subtitle: "International Model & Actor",
+    bio: "Australian-born model and actor Nathan Mander brings a powerful presence and versatile talent to the entertainment industry. Now based in Los Angeles, Nathan's journey is defined by resilience, discipline, and an unwavering commitment to his craft. With a background as a successful fitness entrepreneur, he seamlessly blends physical prowess with a refined aesthetic, making him a standout in diverse roles.\n\nNathan has established a strong reputation across fashion, fitness, and acting. He is an experienced professional with a history of signed representation by prestigious agencies including Bella Management (now Icon Management), Chadwick Models, and Option 1 Models. His runway experience is extensive, featuring highlights such as Melbourne Fashion Week (2021) for MJ Bale and Australian Fashion Week (2022) for FDS. He has also walked at the Cannes Fashion Festival and has been featured in campaigns for notable brands like Cosmo & Donato.\n\nBeyond his professional achievements, Nathan embodies a lifestyle of dedication. A keen athlete, he actively participates in Australian Rules football with the LA Dragons, reflecting the same commitment to excellence that drives his career. His portfolio showcases a remarkable range, from high-energy athletic shots to sophisticated editorial looks, making him an ideal choice for a variety of projects.",
+    bookingUrl: "/contact",
+    instagram: "https://www.instagram.com/nathan.mander/",
+    stats: [
+      { label: "Height", value: "6'2\"" },
+      { label: "Chest", value: "40\"" },
+      { label: "Waist", value: "33\"" },
+      { label: "Hips", value: "37\"" },
+      { label: "Inseam", value: "34\"" },
+      { label: "Shoe", value: "13" },
+      { label: "Hair", value: "Brown" },
+      { label: "Eyes", value: "Green" },
+      { label: "Based In", value: "Los Angeles, CA" },
+    ],
+    heroImage: "/models/nathan-mander/hero.jpg",
+    cardImage: "/models/nathan-mander/hero.jpg",
+    gallery: [
+      "/models/nathan-mander/photos/fitness-action.jpg",
+      "/models/nathan-mander/photos/fashion-editorial.jpg",
+      "/models/nathan-mander/photos/underwear-bodywear.jpg",
+      "/models/nathan-mander/photos/runway-fashion.jpg",
+      "/models/nathan-mander/photos/lifestyle-commercial.jpg",
+      "/models/nathan-mander/photos/skincare-grooming.jpg",
+      "/models/nathan-mander/photos/editorial-skincare.jpg",
+      "/models/nathan-mander/photos/grooming-editorial.jpg",
+      "/models/nathan-mander/photos/full-body-physique.jpg",
+    ],
+    digitals: [
+      "/models/nathan-mander/digitals/digital-1.jpg",
+      "/models/nathan-mander/digitals/digital-2.jpg",
+      "/models/nathan-mander/digitals/digital-3.jpg",
+      "/models/nathan-mander/digitals/digital-4.jpg",
+    ],
+    polaroids: [],
+    videos: [],
+  },
   // ──────────────── WOMEN ────────────────
   {
     slug: "chance-gwyen",
@@ -323,6 +366,7 @@ export const models: Model[] = [
     subtitle: "International Model & Runway Coach",
     bio: "International model, runway coach, and pageant titleholder Chance Gwyen brings strength, elegance, and presence to every stage she steps onto. With experience spanning London Fashion Week, New York Fashion Week, Miami Swim Week, and more, she is known for her commanding runway walk, polished professionalism, and ability to transition effortlessly between editorial, high fashion, fitness, and commercial brand work.\n\nBeyond the runway, Chance is a respected industry leader — serving as a runway coach, show director, and head judge within the fitness and pageant industries. Her blend of confidence, discipline, and femininity has made her a standout both in front of the camera and behind the scenes.\n\nWhether closing a couture show or mentoring the next generation of models, Chance embodies modern elegance with undeniable stage presence.",
     bookingUrl: "https://calendly.com/chancegwyen",
+    instagram: "https://www.instagram.com/chancegwyen/",
     stats: [
       { label: "Height", value: "5'10.5\"" },
       { label: "Bust", value: "33\"" },

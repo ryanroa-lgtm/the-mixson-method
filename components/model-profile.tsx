@@ -163,14 +163,16 @@ export function ModelProfile({ model }: { model: Model }) {
             >
               @themixsonmethod
             </a>
-            <a
-              href="https://www.instagram.com/chancegwyen/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-foreground transition-colors"
-            >
-              @chancegwyen
-            </a>
+            {model.instagram && (
+              <a
+                href={model.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-foreground transition-colors"
+              >
+                @{model.instagram.replace(/\/$/, "").split("/").pop()}
+              </a>
+            )}
           </div>
         </section>
       )}
