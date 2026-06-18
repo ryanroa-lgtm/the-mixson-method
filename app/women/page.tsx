@@ -32,6 +32,11 @@ export default function WomenPage() {
                   className="w-full transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
+              {!m.cardImage.endsWith(".png") && (
+                <p className="font-heading text-xl tracking-widest text-center uppercase group-hover:text-muted transition-colors">
+                  {m.name}
+                </p>
+              )}
             </Link>
           ))}
         </div>
