@@ -292,7 +292,7 @@ export const models: Model[] = [
       { label: "Travel", value: "Nationwide + International" },
     ],
     heroImage: "/models/nick/hero.jpg",
-    cardImage: "/models/nick/hero.jpg",
+    cardImage: "/models/nick/card.png",
     gallery: [
       "/models/nick/photos/NickEditorial.jpg",
       "/models/nick/photos/NickEditorial2.jpg",
@@ -332,7 +332,7 @@ export const models: Model[] = [
       { label: "Based In", value: "Orlando, FL" },
     ],
     heroImage: "/models/seif-asi/hero.jpg",
-    cardImage: "/models/seif-asi/hero.jpg",
+    cardImage: "/models/seif-asi/card.png",
     gallery: [
       "/models/seif-asi/photos/editorial-fence.jpg",
       "/models/seif-asi/photos/editorial-sun.jpg",
