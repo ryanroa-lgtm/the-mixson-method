@@ -316,6 +316,18 @@ export const models: Model[] = [
     videos: [],
   },
   {
+    slug: "seif-asi",
+    name: "Seif Asi",
+    category: "men",
+    stats: [],
+    heroImage: "/models/seif-asi/hero.jpg",
+    cardImage: "/models/seif-asi/hero.jpg",
+    gallery: [],
+    digitals: [],
+    polaroids: [],
+    videos: [],
+  },
+  {
     slug: "nathan-mander",
     name: "Nathan Mander",
     category: "men",
