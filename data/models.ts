@@ -416,7 +416,7 @@ export const models: Model[] = [
       { label: "Shoe", value: "9.5" },
     ],
     heroImage: "/models/chance-gwyen/hero-clean.png",
-    cardImage: "/models/chance-gwyen/hero.png",
+    cardImage: "/models/chance-gwyen/card.jpg",
     gallery: [
       "/models/chance-gwyen/photos/ChanceEditorial.jpg",
       "/models/chance-gwyen/photos/GwyenVogue.jpg",
@@ -446,7 +446,7 @@ export const models: Model[] = [
       { label: "Travel", value: "Nationwide" },
     ],
     heroImage: "/models/aubrey-fallyer/hero.png",
-    cardImage: "/models/aubrey-fallyer/hero.png",
+    cardImage: "/models/aubrey-fallyer/card.jpg",
     gallery: [
       "/models/aubrey-fallyer/photos/AubreyInk5.jpg",
       "/models/aubrey-fallyer/photos/AubreyInk14.jpg",
@@ -477,7 +477,7 @@ export const models: Model[] = [
       { label: "Travel", value: "Nationwide + International" },
     ],
     heroImage: "/models/delaney-faith/hero.png",
-    cardImage: "/models/delaney-faith/hero.png",
+    cardImage: "/models/delaney-faith/card.jpg",
     gallery: [
       "/models/delaney-faith/photos/IMG-7214.jpg",
       "/models/delaney-faith/photos/IMG-7209.jpg",
@@ -514,7 +514,7 @@ export const models: Model[] = [
       { label: "Travel", value: "Nationwide" },
     ],
     heroImage: "/models/kat-amoedo/hero.png",
-    cardImage: "/models/kat-amoedo/hero.png",
+    cardImage: "/models/kat-amoedo/card.jpg",
     gallery: [
       "/models/kat-amoedo/photos/KatTest.jpg",
       "/models/kat-amoedo/photos/KatTest2.jpg",
@@ -553,7 +553,7 @@ export const models: Model[] = [
       { label: "Travel", value: "Nationwide" },
     ],
     heroImage: "/models/simone-beirne/hero.png",
-    cardImage: "/models/simone-beirne/hero.png",
+    cardImage: "/models/simone-beirne/card.jpg",
     gallery: [
       "/models/simone-beirne/photos/SimoneTest.jpeg",
       "/models/simone-beirne/photos/CelesteBurns002.jpg",
