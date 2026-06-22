@@ -43,7 +43,7 @@ export const models: Model[] = [
       { label: "Travel", value: "Nationwide + International" },
     ],
     heroImage: "/models/andrew/hero.png",
-    cardImage: "/models/andrew/hero.png",
+    cardImage: "/models/andrew/card.jpg",
     gallery: [
       "/models/andrew/photos/andrew-31.jpg",
       "/models/andrew/photos/andrew-46.jpg",
@@ -84,7 +84,7 @@ export const models: Model[] = [
       { label: "Travel", value: "Nationwide" },
     ],
     heroImage: "/models/john-l/hero.png",
-    cardImage: "/models/john-l/hero.png",
+    cardImage: "/models/john-l/card.jpg",
     gallery: [
       "/models/john-l/photos/JlivelyTest-2.jpg",
       "/models/john-l/photos/JlivelyTest-8.jpg",
@@ -128,7 +128,7 @@ export const models: Model[] = [
       { label: "Travel", value: "Nationwide + International" },
     ],
     heroImage: "/models/john-w/hero.png",
-    cardImage: "/models/john-w/hero.png",
+    cardImage: "/models/john-w/card.jpg",
     gallery: [
       "/models/john-w/photos/JWalkerTest.jpg",
       "/models/john-w/photos/JWalkerTest_35.jpg",
@@ -171,7 +171,7 @@ export const models: Model[] = [
       { label: "Travel", value: "Nationwide + International" },
     ],
     heroImage: "/models/logan/hero.png",
-    cardImage: "/models/logan/hero.png",
+    cardImage: "/models/logan/card.jpg",
     gallery: [
       "/models/logan/photos/JMIX5004.jpg",
       "/models/logan/photos/JMIX5031.jpg",
@@ -212,7 +212,7 @@ export const models: Model[] = [
       { label: "Travel", value: "Nationwide + International" },
     ],
     heroImage: "/models/luis/hero.png",
-    cardImage: "/models/luis/hero.png",
+    cardImage: "/models/luis/card.jpg",
     gallery: [
       "/models/luis/photos/LRamosTest.jpg",
       "/models/luis/photos/LRamosTest_8.jpg",
@@ -292,7 +292,7 @@ export const models: Model[] = [
       { label: "Travel", value: "Nationwide + International" },
     ],
     heroImage: "/models/nick/hero.jpg",
-    cardImage: "/models/nick/card.png",
+    cardImage: "/models/nick/card.jpg",
     gallery: [
       "/models/nick/photos/NickEditorial.jpg",
       "/models/nick/photos/NickEditorial2.jpg",
@@ -332,7 +332,7 @@ export const models: Model[] = [
       { label: "Based In", value: "Orlando, FL" },
     ],
     heroImage: "/models/seif-asi/hero.jpg",
-    cardImage: "/models/seif-asi/card.png",
+    cardImage: "/models/seif-asi/card.jpg",
     gallery: [
       "/models/seif-asi/photos/editorial-fence.jpg",
       "/models/seif-asi/photos/editorial-sun.jpg",
