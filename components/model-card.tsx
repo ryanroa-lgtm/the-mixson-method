@@ -6,6 +6,11 @@ import { usePageTransition } from "@/components/transition-provider";
 export function ModelCard({ model }: { model: Model }) {
   const { navigateTo } = usePageTransition();
 
+  // First name only, but keep a trailing last initial (e.g. "John L.")
+  const [first, second] = model.name.split(" ");
+  const displayName =
+    second && /^[A-Z]\.?$/.test(second) ? `${first} ${second}` : first;
+
   return (
     <a
       href={`/${model.category}/${model.slug}`}
@@ -27,7 +32,7 @@ export function ModelCard({ model }: { model: Model }) {
       </div>
       {!model.cardImage.endsWith(".png") && (
         <p className="font-heading text-lg tracking-wide text-center uppercase group-hover:text-muted transition-colors">
-          {model.name.split(" ")[0]}
+          {displayName}
         </p>
       )}
     </a>
