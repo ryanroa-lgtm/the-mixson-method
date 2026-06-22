@@ -6,10 +6,15 @@ import { usePageTransition } from "@/components/transition-provider";
 export function ModelCard({ model }: { model: Model }) {
   const { navigateTo } = usePageTransition();
 
-  // First name only, but keep a trailing last initial (e.g. "John L.")
+  // Women show full names; men show first name only, keeping a trailing
+  // last initial when present (e.g. "John L.").
   const [first, second] = model.name.split(" ");
   const displayName =
-    second && /^[A-Z]\.?$/.test(second) ? `${first} ${second}` : first;
+    model.category === "women"
+      ? model.name
+      : second && /^[A-Z]\.?$/.test(second)
+        ? `${first} ${second}`
+        : first;
 
   return (
     <a
