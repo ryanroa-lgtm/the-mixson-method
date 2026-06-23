@@ -366,7 +366,7 @@ export const models: Model[] = [
       { label: "Inseam", value: "31\"" },
       { label: "Shoe", value: "9 US / EU42" },
       { label: "Based In", value: "London, UK" },
-      { label: "Travel", value: "Nationwide + International" },
+      { label: "Travel", value: "International" },
     ],
     heroImage: "/models/ellis/hero.jpg",
     cardImage: "/models/ellis/card.jpg",
