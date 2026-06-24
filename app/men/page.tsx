@@ -2,10 +2,29 @@ import Link from "next/link";
 import { getModelsByCategory } from "@/data/models";
 import { ModelCard } from "@/components/model-card";
 
+// Explicit roster order (3-col grid fills left-to-right):
+// Row 1: Luis, Ellis, Logan · Row 2: Nick, John L., Seif · Row 3: Andrew, John W.
+const ROSTER_ORDER = [
+  "luis",
+  "ellis",
+  "logan",
+  "nick",
+  "john-l",
+  "seif-asi",
+  "andrew",
+  "john-w",
+];
+
 export default function MenPage() {
   const men = getModelsByCategory("men");
   const featured = men.filter((m) => m.featured);
-  const roster = men.filter((m) => !m.featured);
+  const roster = men
+    .filter((m) => !m.featured)
+    .sort((a, b) => {
+      const ai = ROSTER_ORDER.indexOf(a.slug);
+      const bi = ROSTER_ORDER.indexOf(b.slug);
+      return (ai === -1 ? Infinity : ai) - (bi === -1 ? Infinity : bi);
+    });
 
   return (
     <section className="mx-auto max-w-6xl px-6 py-24">
