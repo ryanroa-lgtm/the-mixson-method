@@ -371,6 +371,7 @@ export const models: Model[] = [
     heroImage: "/models/ellis/hero.jpg",
     cardImage: "/models/ellis/card.jpg",
     gallery: [
+      "/models/ellis/photos/editorial-boylicious-cover.jpg",
       "/models/ellis/photos/editorial-archway.jpg",
       "/models/ellis/photos/editorial-turtleneck.jpg",
       "/models/ellis/photos/editorial-seated.jpg",
