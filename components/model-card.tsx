@@ -16,10 +16,6 @@ export function ModelCard({ model }: { model: Model }) {
         ? `${first} ${second}`
         : first;
 
-  // Development source photos have inconsistent aspect ratios, so pin their
-  // cards to the same 5:7 portrait crop the men's roster uses for a uniform grid.
-  const uniformCrop = model.category === "development";
-
   return (
     <a
       href={`/${model.category}/${model.slug}`}
@@ -30,16 +26,12 @@ export function ModelCard({ model }: { model: Model }) {
       className="group block"
     >
       {/* Placeholder image */}
-      <div
-        className={`w-full mb-4 overflow-hidden${uniformCrop ? " aspect-[5/7]" : ""}`}
-      >
+      <div className="w-full mb-4 overflow-hidden">
         {model.cardImage && (
           <img
             src={model.cardImage}
             alt={model.name}
-            className={`w-full transition-transform duration-500 group-hover:scale-105${
-              uniformCrop ? " h-full object-cover object-top" : ""
-            }`}
+            className="w-full transition-transform duration-500 group-hover:scale-105"
           />
         )}
       </div>

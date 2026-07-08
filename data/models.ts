@@ -253,7 +253,7 @@ export const models: Model[] = [
       { label: "Travel", value: "Nationwide" },
     ],
     heroImage: "/models/steven/hero.png",
-    cardImage: "/models/steven/hero.png",
+    cardImage: "/models/steven/card.jpg",
     gallery: [
       "/models/steven/photos/StevenG.jpg",
       "/models/steven/photos/StevenGSht2.jpg",
@@ -290,7 +290,7 @@ export const models: Model[] = [
       { label: "Eyes", value: "Brown" },
     ],
     heroImage: "/models/derec-rodriguez/hero.jpg",
-    cardImage: "/models/derec-rodriguez/hero.jpg",
+    cardImage: "/models/derec-rodriguez/card.jpg",
     gallery: [
       "/models/derec-rodriguez/photos/runway.jpg",
       "/models/derec-rodriguez/photos/shirtless.jpg",
@@ -318,7 +318,7 @@ export const models: Model[] = [
       { label: "Eyes", value: "Brown" },
     ],
     heroImage: "/models/gabrielle-edrich/hero.jpg",
-    cardImage: "/models/gabrielle-edrich/hero.jpg",
+    cardImage: "/models/gabrielle-edrich/card.jpg",
     gallery: [
       "/models/gabrielle-edrich/photos/comp-card.jpg",
     ],
@@ -347,7 +347,7 @@ export const models: Model[] = [
       { label: "Based In", value: "Miami, FL" },
     ],
     heroImage: "/models/zale-zillions/hero.jpg",
-    cardImage: "/models/zale-zillions/hero.jpg",
+    cardImage: "/models/zale-zillions/card.jpg",
     gallery: [
       "/models/zale-zillions/photos/pool.jpg",
       "/models/zale-zillions/photos/shirtless-floral.jpg",
