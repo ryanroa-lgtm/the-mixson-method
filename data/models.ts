@@ -253,7 +253,7 @@ export const models: Model[] = [
       { label: "Travel", value: "Nationwide" },
     ],
     heroImage: "/models/steven/hero.png",
-    cardImage: "/models/steven/hero.png",
+    cardImage: "/models/steven/card.png",
     gallery: [
       "/models/steven/photos/StevenG.jpg",
       "/models/steven/photos/StevenGSht2.jpg",
