@@ -415,10 +415,20 @@ export const models: Model[] = [
       "/models/mate-kovacs/photos/cowboy-bnw-frontfacing.jpg",
       "/models/mate-kovacs/photos/cowboy-and-mesh.jpg",
       "/models/mate-kovacs/photos/facepaint-headshot.jpg",
+      "/models/mate-kovacs/photos/white-suit.jpg",
+      "/models/mate-kovacs/photos/front-color-vest.jpg",
+      "/models/mate-kovacs/photos/racer.jpg",
+      "/models/mate-kovacs/photos/bnw-window-light.jpg",
+      "/models/mate-kovacs/photos/bnw-casual.jpg",
+      "/models/mate-kovacs/photos/bnw-underwear.jpg",
+      "/models/mate-kovacs/photos/img-4642.jpg",
     ],
     digitals: [],
     polaroids: [],
-    videos: [],
+    videos: [
+      "/models/mate-kovacs/videos/self-tape.mp4",
+      "/models/mate-kovacs/videos/underwear-portrait.mp4",
+    ],
   },
   // ──────────────── WOMEN ────────────────
   {
