@@ -12,6 +12,7 @@ const navLinks = [
   { href: "/development", label: "Development" },
   { href: "/submissions", label: "Submissions" },
   { href: "/contact", label: "Contact" },
+  { href: "/highlights", label: "Highlights" },
 ];
 
 export function Navbar() {
