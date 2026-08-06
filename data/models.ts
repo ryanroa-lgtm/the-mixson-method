@@ -497,7 +497,7 @@ export const models: Model[] = [
       { label: "Hair", value: "Blonde" },
       { label: "Shoe", value: "9.5" },
       { label: "Based In", value: "Los Angeles, CA" },
-      { label: "Travel", value: "International" },
+      { label: "Travel", value: "Nationwide + International" },
     ],
     heroImage: "/models/chance-gwyen/hero-clean.png",
     cardImage: "/models/chance-gwyen/card.jpg",
