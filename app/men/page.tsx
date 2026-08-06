@@ -3,7 +3,7 @@ import { getModelsByCategory } from "@/data/models";
 import { ModelCard } from "@/components/model-card";
 
 // Explicit roster order (3-col grid fills left-to-right):
-// Row 1: Luis, Ellis, Logan · Row 2: John L., Seif, Andrew · Row 3: John W.
+// Row 1: Luis, Ellis, Logan · Row 2: John L., Seif, Andrew
 const ROSTER_ORDER = [
   "luis",
   "ellis",
@@ -11,7 +11,6 @@ const ROSTER_ORDER = [
   "john-l",
   "seif-asi",
   "andrew",
-  "john-w",
 ];
 
 export default function MenPage() {
