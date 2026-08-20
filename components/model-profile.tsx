@@ -137,45 +137,50 @@ export function ModelProfile({ model }: { model: Model }) {
         </section>
       )}
 
-      {/* Booking CTA (featured only) */}
-      {model.bookingUrl && (
-        <section className="mb-16 text-center border-t border-border pt-16">
+      {/* Booking CTA — every profile routes through the agency */}
+      <section className="mb-16 text-center border-t border-border pt-16">
+        <Link
+          href={`/contact?subject=Booking&talent=${encodeURIComponent(model.name)}`}
+          className="inline-block bg-foreground text-white px-12 py-4 text-sm uppercase tracking-widest hover:bg-neutral-700 transition-colors"
+        >
+          Book {model.name.split(" ")[0]}
+        </Link>
+        <p className="mt-4 mb-8 text-sm text-muted">
+          Booking more than one?{" "}
+          <Link
+            href="/contact?subject=Group%20%2F%20Multiple%20Talent"
+            className="underline underline-offset-4 hover:text-foreground transition-colors"
+          >
+            Request a group booking
+          </Link>
+        </p>
+        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm text-muted">
           <a
-            href={model.bookingUrl}
+            href="mailto:themixsonmethod@gmail.com"
+            className="hover:text-foreground transition-colors"
+          >
+            themixsonmethod@gmail.com
+          </a>
+          <a
+            href="https://www.instagram.com/themixsonmethod/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-foreground text-white px-12 py-4 text-sm uppercase tracking-widest hover:bg-neutral-700 transition-colors mb-8"
+            className="hover:text-foreground transition-colors"
           >
-            Book {model.name.split(" ")[0]}
+            @themixsonmethod
           </a>
-          <div className="flex items-center justify-center gap-8 text-sm text-muted">
+          {model.instagram && (
             <a
-              href="mailto:themixsonmethod@gmail.com"
-              className="hover:text-foreground transition-colors"
-            >
-              themixsonmethod@gmail.com
-            </a>
-            <a
-              href="https://www.instagram.com/themixsonmethod/"
+              href={model.instagram}
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-foreground transition-colors"
             >
-              @themixsonmethod
+              @{model.instagram.replace(/\/$/, "").split("/").pop()}
             </a>
-            {model.instagram && (
-              <a
-                href={model.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-foreground transition-colors"
-              >
-                @{model.instagram.replace(/\/$/, "").split("/").pop()}
-              </a>
-            )}
-          </div>
-        </section>
-      )}
+          )}
+        </div>
+      </section>
     </article>
   );
 }

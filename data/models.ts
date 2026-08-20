@@ -20,7 +20,6 @@ export interface Model {
   featured?: boolean;
   subtitle?: string;
   bio?: string;
-  bookingUrl?: string;
   instagram?: string;
 }
 
@@ -30,6 +29,7 @@ export const models: Model[] = [
     slug: "andrew",
     name: "Andrew",
     category: "men",
+    instagram: "https://www.instagram.com/drew_creates1/",
     stats: [
       { label: "Height", value: "6'3\"" },
       { label: "Chest", value: "46\"" },
@@ -72,6 +72,7 @@ export const models: Model[] = [
     slug: "john-l",
     name: "John L.",
     category: "men",
+    instagram: "https://www.instagram.com/j_lives/",
     stats: [
       { label: "Height", value: "6'0\"" },
       { label: "Chest", value: "42\"" },
@@ -192,6 +193,7 @@ export const models: Model[] = [
     slug: "luis",
     name: "Luis",
     category: "men",
+    instagram: "https://www.instagram.com/bori_adventures/",
     stats: [
       { label: "Height", value: "5'11\"" },
       { label: "Chest", value: "40\"" },
@@ -478,7 +480,6 @@ export const models: Model[] = [
     featured: true,
     subtitle: "International Model & Runway Coach",
     bio: "International model, runway coach, and pageant titleholder Chance Gwyen brings strength, elegance, and presence to every stage she steps onto. With experience spanning London Fashion Week, New York Fashion Week, Miami Swim Week, and more, she is known for her commanding runway walk, polished professionalism, and ability to transition effortlessly between editorial, high fashion, fitness, and commercial brand work.\n\nBeyond the runway, Chance is a respected industry leader — serving as a runway coach, show director, and head judge within the fitness and pageant industries. Her blend of confidence, discipline, and femininity has made her a standout both in front of the camera and behind the scenes.\n\nWhether closing a couture show or mentoring the next generation of models, Chance embodies modern elegance with undeniable stage presence.",
-    bookingUrl: "https://calendly.com/chancegwyen",
     instagram: "https://www.instagram.com/chancegwyen/",
     stats: [
       { label: "Height", value: "5'10.5\"" },
@@ -510,6 +511,7 @@ export const models: Model[] = [
     slug: "aubrey-fallyer",
     name: "Aubrey Fallyer",
     category: "women",
+    instagram: "https://www.instagram.com/aubreyfallyer/",
     stats: [
       { label: "Height", value: "5'9\"" },
       { label: "Bust", value: "32\"" },
@@ -589,6 +591,7 @@ export const models: Model[] = [
     slug: "kat-amoedo",
     name: "Kat Amoedo",
     category: "women",
+    instagram: "https://www.instagram.com/daughterofnoir/",
     stats: [
       { label: "Height", value: "5'8\"" },
       { label: "Bust", value: "32\"" },
