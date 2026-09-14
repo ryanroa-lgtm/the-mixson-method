@@ -1,6 +1,12 @@
 "use client";
 
-import { useState, useRef, type FormEvent, type ChangeEvent } from "react";
+import {
+  useState,
+  useRef,
+  useEffect,
+  type FormEvent,
+  type ChangeEvent,
+} from "react";
 
 type ExperienceLevel = "" | "new-face" | "some-experience" | "experienced";
 
@@ -202,6 +208,92 @@ function CheckboxGroup({
   );
 }
 
+// ── Missing-field dialog ──
+
+type MissingField = { anchorId: string; label: string };
+
+function MissingFieldsDialog({
+  fields,
+  onClose,
+  onGoTo,
+}: {
+  fields: MissingField[];
+  onClose: () => void;
+  onGoTo: (anchorId: string) => void;
+}) {
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [onClose]);
+
+  const plural = fields.length > 1;
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center px-6"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="missing-fields-title"
+    >
+      <div
+        className="absolute inset-0 bg-black/50"
+        onClick={onClose}
+        aria-hidden="true"
+      />
+      <div className="relative w-full max-w-md bg-white border border-border p-8 shadow-xl">
+        <h2
+          id="missing-fields-title"
+          className="font-heading text-xl uppercase tracking-wide mb-3"
+        >
+          {plural ? "A few fields still need you" : "One field still needs you"}
+        </h2>
+        <p className="text-sm text-muted leading-relaxed mb-5">
+          Please complete the following before submitting:
+        </p>
+
+        <ul className="space-y-2 mb-7 max-h-56 overflow-y-auto">
+          {fields.map((f) => (
+            <li key={f.anchorId}>
+              <button
+                type="button"
+                onClick={() => onGoTo(f.anchorId)}
+                className="text-left text-sm underline underline-offset-4 decoration-border hover:decoration-foreground transition-colors"
+              >
+                {f.label}
+              </button>
+            </li>
+          ))}
+        </ul>
+
+        <div className="flex flex-col gap-3">
+          <button
+            type="button"
+            onClick={() => onGoTo(fields[0].anchorId)}
+            className="w-full bg-foreground text-white py-3 text-sm uppercase tracking-widest hover:bg-neutral-700 transition-colors"
+          >
+            {plural ? "Take me to the first one" : "Take me there"}
+          </button>
+          <button
+            type="button"
+            onClick={onClose}
+            className="w-full border border-border py-3 text-sm uppercase tracking-widest text-muted hover:text-foreground hover:border-foreground transition-colors"
+          >
+            Keep editing
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ── Page ──
 
 export default function SubmissionsPage() {
@@ -217,8 +309,10 @@ export default function SubmissionsPage() {
   ]);
   const [compCardPreview, setCompCardPreview] = useState<string | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [missingFields, setMissingFields] = useState<MissingField[]>([]);
   const filesRef = useRef<(File | null)[]>([null, null, null, null]);
   const compCardRef = useRef<File | null>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   function handleFileChange(index: number, file: File | null) {
     if (!file) return;
@@ -242,28 +336,98 @@ export default function SubmissionsPage() {
     reader.readAsDataURL(file);
   }
 
+  // The form carries `noValidate` so the browser never raises its own bubble —
+  // several controls are visually hidden and a native message would land
+  // somewhere nobody can see. We gather everything that is missing instead and
+  // show it in one dialog, in the order the fields appear on the page.
+  function collectMissing(form: HTMLFormElement): MissingField[] {
+    const missing: MissingField[] = [];
+
+    const labelFor = (el: HTMLElement & { name?: string; id?: string }) => {
+      const byFor = el.id
+        ? form.querySelector<HTMLLabelElement>(`label[for="${el.id}"]`)
+        : null;
+      const text = byFor?.textContent?.replace(/\s*\*\s*$/, "").trim();
+      return text || el.id || el.name || "This field";
+    };
+
+    for (const el of Array.from(form.elements)) {
+      if (
+        !(el instanceof HTMLInputElement) &&
+        !(el instanceof HTMLSelectElement) &&
+        !(el instanceof HTMLTextAreaElement)
+      ) {
+        continue;
+      }
+      if (el.type === "file" || el.disabled || !el.name) continue;
+      if (el.checkValidity()) continue;
+      const label = labelFor(el);
+      missing.push({
+        anchorId: el.id || el.name,
+        label: el.validity.valueMissing
+          ? label
+          : `${label} — check the format`,
+      });
+    }
+
+    photoLabels.forEach((label, i) => {
+      if (!filesRef.current[i]) {
+        missing.push({ anchorId: "digitals", label: `Digitals — ${label}` });
+      }
+    });
+    if (experience === "experienced" && !compCardRef.current) {
+      missing.push({ anchorId: "comp-card", label: "Comp Card" });
+    }
+
+    // Every digital missing reads better as a single line than four.
+    const digitals = missing.filter((m) => m.anchorId === "digitals");
+    if (digitals.length === photoLabels.length) {
+      return [
+        ...missing.filter((m) => m.anchorId !== "digitals"),
+        { anchorId: "digitals", label: "Digitals — all four photos" },
+      ];
+    }
+    return missing;
+  }
+
+  function goToField(anchorId: string) {
+    setMissingFields([]);
+    // Let the dialog unmount (it locks body scroll) before scrolling.
+    requestAnimationFrame(() => {
+      const form = formRef.current;
+      if (!form) return;
+      const target =
+        document.getElementById(anchorId) ||
+        form.querySelector<HTMLElement>(`[name="${anchorId}"]`);
+      if (!target) return;
+      target.scrollIntoView({ behavior: "smooth", block: "center" });
+      if (
+        target instanceof HTMLInputElement ||
+        target instanceof HTMLSelectElement ||
+        target instanceof HTMLTextAreaElement
+      ) {
+        // preventScroll so focus doesn't fight the smooth scroll above.
+        target.focus({ preventScroll: true });
+      }
+    });
+  }
+
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    // The file inputs are visually hidden, so a native `required` on them
-    // blocks submission with a validation bubble nobody can see. Check them
-    // here instead and say plainly what is missing.
-    const missing = photoLabels.filter((_, i) => !filesRef.current[i]);
-    if (experience === "experienced" && !compCardRef.current) {
-      missing.push("Comp Card");
-    }
+    const form = e.currentTarget;
+
+    const missing = collectMissing(form);
     if (missing.length > 0) {
-      setStatus("error");
-      setErrorMsg(
-        `Please add the following before submitting: ${missing.join(", ")}.`
-      );
+      setStatus("idle");
+      setErrorMsg(null);
+      setMissingFields(missing);
       return;
     }
 
     setStatus("sending");
     setErrorMsg(null);
 
-    const form = e.currentTarget;
     const formData = new FormData();
 
     // Gather all text/select/textarea/checkbox fields
@@ -363,7 +527,12 @@ export default function SubmissionsPage() {
       </div>
 
       {/* ── Form ── */}
-      <form onSubmit={handleSubmit} className="space-y-10">
+      <form
+        ref={formRef}
+        onSubmit={handleSubmit}
+        noValidate
+        className="space-y-10"
+      >
         {/* ── 1. Core Info ── */}
         <div className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -421,7 +590,7 @@ export default function SubmissionsPage() {
         </div>
 
         {/* ── Digitals Upload ── */}
-        <div>
+        <div id="digitals" className="scroll-mt-24">
           <p className={`${labelClass} mb-4`}>Upload Digitals *</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {photoLabels.map((label, i) => (
@@ -604,7 +773,7 @@ export default function SubmissionsPage() {
               options={["Local", "Regional", "National", "International"]}
             />
             {/* Comp card upload */}
-            <div>
+            <div id="comp-card" className="scroll-mt-24">
               <p className={`${labelClass} mb-2`}>Upload Comp Card *</p>
               <label className="group cursor-pointer block w-48">
                 <div className="aspect-[3/4] border border-border flex items-center justify-center overflow-hidden bg-neutral-50 hover:bg-neutral-100 transition-colors">
@@ -719,6 +888,14 @@ export default function SubmissionsPage() {
           </p>
         )}
       </form>
+
+      {missingFields.length > 0 && (
+        <MissingFieldsDialog
+          fields={missingFields}
+          onClose={() => setMissingFields([])}
+          onGoTo={goToField}
+        />
+      )}
     </section>
   );
 }
