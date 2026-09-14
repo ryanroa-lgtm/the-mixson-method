@@ -1,5 +1,10 @@
 import { Resend } from "resend";
 
+// Attachments make this the slowest route on the site: the whole upload has to
+// arrive before Resend is called, so the default 10s ceiling is not enough.
+export const runtime = "nodejs";
+export const maxDuration = 60;
+
 export async function POST(request: Request) {
   const formData = await request.formData();
 
@@ -98,6 +103,14 @@ export async function POST(request: Request) {
   const name = formData.get("name") as string;
   const experience = formData.get("experience") as string;
 
+  if (!process.env.RESEND_API_KEY) {
+    console.error("RESEND_API_KEY is not set in this environment.");
+    return Response.json(
+      { error: "Email is not configured on the server." },
+      { status: 500 }
+    );
+  }
+
   const resend = new Resend(process.env.RESEND_API_KEY);
 
   try {
@@ -119,7 +132,12 @@ export async function POST(request: Request) {
   } catch (err) {
     console.error("Submission error:", err);
     return Response.json(
-      { error: "Failed to send submission." },
+      {
+        error:
+          err instanceof Error
+            ? `Failed to send submission: ${err.message}`
+            : "Failed to send submission.",
+      },
       { status: 500 }
     );
   }

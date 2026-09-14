@@ -21,23 +21,46 @@ const castingAvailability = [
   "Flexible / Open",
 ];
 
+// Anything that can go wrong here — a format the browser can't decode (HEIC
+// off an iPhone, in a non-Safari browser), a corrupt file, a canvas that
+// refuses to encode — falls back to the original file. It must never leave
+// the promise pending, or the submit handler stalls on "Submitting…" forever.
 function compressImage(
   file: File,
   maxWidth = 1200,
   quality = 0.7
 ): Promise<Blob> {
   return new Promise((resolve) => {
+    const url = URL.createObjectURL(file);
+    let settled = false;
+
+    const done = (blob: Blob) => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      URL.revokeObjectURL(url);
+      resolve(blob);
+    };
+
+    const timer = setTimeout(() => done(file), 15000);
+
     const img = new Image();
     img.onload = () => {
-      const canvas = document.createElement("canvas");
-      const ratio = Math.min(maxWidth / img.width, 1);
-      canvas.width = img.width * ratio;
-      canvas.height = img.height * ratio;
-      const ctx = canvas.getContext("2d")!;
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-      canvas.toBlob((blob) => resolve(blob!), "image/jpeg", quality);
+      try {
+        const canvas = document.createElement("canvas");
+        const ratio = Math.min(maxWidth / img.width, 1);
+        canvas.width = Math.max(1, Math.round(img.width * ratio));
+        canvas.height = Math.max(1, Math.round(img.height * ratio));
+        const ctx = canvas.getContext("2d");
+        if (!ctx) return done(file);
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        canvas.toBlob((blob) => done(blob ?? file), "image/jpeg", quality);
+      } catch {
+        done(file);
+      }
     };
-    img.src = URL.createObjectURL(file);
+    img.onerror = () => done(file);
+    img.src = url;
   });
 }
 
@@ -193,6 +216,7 @@ export default function SubmissionsPage() {
     null,
   ]);
   const [compCardPreview, setCompCardPreview] = useState<string | null>(null);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const filesRef = useRef<(File | null)[]>([null, null, null, null]);
   const compCardRef = useRef<File | null>(null);
 
@@ -220,7 +244,24 @@ export default function SubmissionsPage() {
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    // The file inputs are visually hidden, so a native `required` on them
+    // blocks submission with a validation bubble nobody can see. Check them
+    // here instead and say plainly what is missing.
+    const missing = photoLabels.filter((_, i) => !filesRef.current[i]);
+    if (experience === "experienced" && !compCardRef.current) {
+      missing.push("Comp Card");
+    }
+    if (missing.length > 0) {
+      setStatus("error");
+      setErrorMsg(
+        `Please add the following before submitting: ${missing.join(", ")}.`
+      );
+      return;
+    }
+
     setStatus("sending");
+    setErrorMsg(null);
 
     const form = e.currentTarget;
     const formData = new FormData();
@@ -262,16 +303,31 @@ export default function SubmissionsPage() {
         method: "POST",
         body: formData,
       });
-      if (!res.ok) throw new Error();
+      if (!res.ok) {
+        const detail = await res
+          .json()
+          .then((d) => d?.error as string | undefined)
+          .catch(() => undefined);
+        throw new Error(
+          detail || `The server rejected the submission (${res.status}).`
+        );
+      }
       setStatus("sent");
+      setErrorMsg(null);
       form.reset();
       setExperience("");
       setPreviews([null, null, null, null]);
       setCompCardPreview(null);
       filesRef.current = [null, null, null, null];
       compCardRef.current = null;
-    } catch {
+    } catch (err) {
+      console.error("Submission failed:", err);
       setStatus("error");
+      setErrorMsg(
+        err instanceof Error && err.message
+          ? err.message
+          : "Something went wrong. Please try again."
+      );
     }
   }
 
@@ -406,7 +462,6 @@ export default function SubmissionsPage() {
                   type="file"
                   name={`photo-${i}`}
                   accept="image/*"
-                  required
                   className="sr-only"
                   onChange={(e) =>
                     handleFileChange(i, e.target.files?.[0] ?? null)
@@ -588,7 +643,6 @@ export default function SubmissionsPage() {
                   type="file"
                   name="comp-card"
                   accept="image/*"
-                  required
                   className="sr-only"
                   onChange={(e) =>
                     handleCompCard(e.target.files?.[0] ?? null)
@@ -661,7 +715,7 @@ export default function SubmissionsPage() {
         )}
         {status === "error" && (
           <p className="text-sm text-center text-red-600">
-            Something went wrong. Please try again.
+            {errorMsg || "Something went wrong. Please try again."}
           </p>
         )}
       </form>
