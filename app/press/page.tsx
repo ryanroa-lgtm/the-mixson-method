@@ -1,37 +1,70 @@
-import { PressSlideshow } from "@/components/press-slideshow";
+// Press coverage, ordered so the editorial features carry the page. Outlets in
+// `featuredOutlets` get logos and a gallery; the syndicated and
+// press-release-distribution outlets are listed as text further down.
+//
+// `model`, `date` and `href` are left undefined wherever the detail hasn't been
+// supplied yet — the caption renders whatever it has, so filling these in later
+// is a data edit and nothing more.
+type Feature = {
+  src: string;
+  model?: string;
+  date?: string;
+  href?: string;
+};
 
-const logos = [
-  { src: "/press/logos/elle-china.svg", alt: "Elle China" },
-  { src: "/press/logos/cosmopolitan-japan.svg", alt: "Cosmopolitan Japan" },
-  { src: "/press/logos/us-national-times.svg", alt: "US National Times" },
-  { src: "/press/logos/american-times-reporter.svg", alt: "American Times Reporter" },
-  { src: "/press/logos/fox-21.svg", alt: "FOX 21" },
-  { src: "/press/logos/florida-culture-times.svg", alt: "Florida Culture Times" },
-  { src: "/press/logos/ein-presswire.svg", alt: "EIN Presswire" },
+type Outlet = {
+  name: string;
+  logo?: string;
+  features: Feature[];
+};
+
+const featuredOutlets: Outlet[] = [
+  {
+    name: "Elle China",
+    logo: "/press/logos/elle-china.svg",
+    features: [
+      { src: "/press/features/elle-china-1.jpg" },
+      { src: "/press/features/elle-china-2.jpg" },
+      { src: "/press/features/elle-china-3.jpg" },
+      { src: "/press/features/elle-china-4.jpg" },
+    ],
+  },
+  {
+    name: "Cosmopolitan Japan",
+    logo: "/press/logos/cosmopolitan-japan.svg",
+    features: [{ src: "/press/features/cosmopolitan-japan-1.jpg" }],
+  },
+  {
+    name: "FOX 21",
+    logo: "/press/logos/fox-21.svg",
+    features: [
+      { src: "/press/features/fox-21-1.jpg" },
+      { src: "/press/features/fox-21-2.jpg" },
+    ],
+  },
+  {
+    name: "Getty Images",
+    // No official mark on file yet — the tile falls back to the name set in
+    // the heading face until a logo is added.
+    features: [
+      { src: "/press/features/getty-images-1.jpg" },
+      { src: "/press/features/getty-images-2.jpg" },
+    ],
+  },
 ];
 
-// Interleaved round-robin so no two images from the same publication are
-// adjacent (including across the loop seam from last back to first).
-const features = [
-  { src: "/press/features/elle-china-1.jpg", alt: "Elle China feature" },
-  { src: "/press/features/gossip-stone-1.jpg", alt: "Gossip Stone feature" },
-  { src: "/press/features/getty-images-1.jpg", alt: "Getty Images feature" },
-  { src: "/press/features/us-national-times-1.jpg", alt: "US National Times feature" },
-  { src: "/press/features/american-times-reporter-1.jpg", alt: "American Times Reporter feature" },
-  { src: "/press/features/elle-china-2.jpg", alt: "Elle China feature" },
-  { src: "/press/features/fox-21-1.jpg", alt: "FOX 21 feature" },
-  { src: "/press/features/florida-culture-times-1.jpg", alt: "Florida Culture Times feature" },
-  { src: "/press/features/cosmopolitan-japan-1.jpg", alt: "Cosmopolitan Japan feature" },
-  { src: "/press/features/gossip-stone-2.jpg", alt: "Gossip Stone feature" },
-  { src: "/press/features/elle-china-3.jpg", alt: "Elle China feature" },
-  { src: "/press/features/getty-images-2.jpg", alt: "Getty Images feature" },
-  { src: "/press/features/us-national-times-2.jpg", alt: "US National Times feature" },
-  { src: "/press/features/american-times-reporter-2.jpg", alt: "American Times Reporter feature" },
-  { src: "/press/features/fox-21-2.jpg", alt: "FOX 21 feature" },
-  { src: "/press/features/elle-china-4.jpg", alt: "Elle China feature" },
-  { src: "/press/features/florida-culture-times-2.jpg", alt: "Florida Culture Times feature" },
-  { src: "/press/features/gossip-stone-3.jpg", alt: "Gossip Stone feature" },
+const additionalCoverage: { name: string; href?: string }[] = [
+  { name: "US National Times" },
+  { name: "American Times Reporter" },
+  { name: "Florida Culture Times" },
+  // Not named in the brief. It was in the old gallery and sits in the same
+  // tier as the others, so it is listed here rather than dropped outright.
+  { name: "Gossip Stone" },
 ];
+
+function caption(outlet: string, f: Feature) {
+  return [outlet, f.model, f.date].filter(Boolean).join(" · ");
+}
 
 export default function PressPage() {
   return (
@@ -45,24 +78,104 @@ export default function PressPage() {
         <h2 className="font-heading text-2xl tracking-wide uppercase mb-10 text-center text-muted">
           As Seen In
         </h2>
-        <div className="flex flex-wrap justify-center gap-4">
-          {logos.map((logo) => (
+        <div className="flex flex-wrap justify-center gap-6">
+          {featuredOutlets.map((outlet) => (
             <div
-              key={logo.src}
-              className="flex h-20 w-40 items-center justify-center border border-border p-4"
+              key={outlet.name}
+              className="flex h-24 w-48 items-center justify-center border border-border p-5"
             >
-              <img
-                src={logo.src}
-                alt={logo.alt}
-                className="max-h-full max-w-full object-contain"
-              />
+              {outlet.logo ? (
+                <img
+                  src={outlet.logo}
+                  alt={outlet.name}
+                  className="max-h-full max-w-full object-contain"
+                />
+              ) : (
+                <span className="font-heading text-base tracking-widest uppercase text-center">
+                  {outlet.name}
+                </span>
+              )}
             </div>
           ))}
         </div>
       </div>
 
-      {/* Featured coverage */}
-      <PressSlideshow images={features} />
+      {/* Featured coverage, grouped by outlet */}
+      <div className="space-y-20">
+        {featuredOutlets.map((outlet) => (
+          <div key={outlet.name}>
+            <h2 className="font-heading text-xl tracking-widest uppercase mb-8 pb-3 border-b border-border">
+              {outlet.name}
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              {outlet.features.map((f) => {
+                const text = caption(outlet.name, f);
+                return (
+                  <figure key={f.src}>
+                    <div className="aspect-[3/4] overflow-hidden bg-neutral-50">
+                      <img
+                        src={f.src}
+                        alt={`${outlet.name} feature`}
+                        className="h-full w-full object-contain"
+                      />
+                    </div>
+                    <figcaption className="mt-3 text-xs uppercase tracking-widest text-muted">
+                      {f.href ? (
+                        <a
+                          href={f.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline underline-offset-4 decoration-border hover:decoration-foreground hover:text-foreground transition-colors"
+                        >
+                          {text}
+                        </a>
+                      ) : (
+                        text
+                      )}
+                    </figcaption>
+                  </figure>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Additional coverage */}
+      <div className="mt-24 pt-10 border-t border-border">
+        <h2 className="font-heading text-sm tracking-widest uppercase mb-5 text-muted">
+          Additional Coverage
+        </h2>
+        <ul className="flex flex-wrap gap-x-8 gap-y-2 text-sm text-muted">
+          {additionalCoverage.map((item) => (
+            <li key={item.name}>
+              {item.href ? (
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-4 decoration-border hover:decoration-foreground hover:text-foreground transition-colors"
+                >
+                  {item.name}
+                </a>
+              ) : (
+                item.name
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Press inquiries */}
+      <p className="mt-16 text-center text-sm text-muted">
+        Press inquiries:{" "}
+        <a
+          href="mailto:themixsonmethod@gmail.com"
+          className="underline underline-offset-4 decoration-border hover:decoration-foreground hover:text-foreground transition-colors"
+        >
+          themixsonmethod@gmail.com
+        </a>
+      </p>
     </section>
   );
 }
