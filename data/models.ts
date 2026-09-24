@@ -208,7 +208,7 @@ export const models: Model[] = [
       { label: "Based In", value: "Jacksonville, FL" },
       { label: "Travel", value: "Nationwide + International" },
     ],
-    heroImage: "/models/luis/photos/LRamosTest.jpg",
+    heroImage: "/models/luis/hero.jpg",
     cardImage: "/models/luis/card.jpg",
     gallery: [
       "/models/luis/photos/LRamosTest.jpg",
