@@ -72,7 +72,7 @@ export function ModelProfile({ model }: { model: Model }) {
                 <img
                   key={i}
                   src={src}
-                  alt={`${model.name} photo ${i + 1}`}
+                  alt={model.galleryAlt?.[i] ?? `${model.name} photo ${i + 1}`}
                   className="w-full"
                 />
               ) : null

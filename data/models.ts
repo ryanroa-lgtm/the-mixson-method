@@ -12,6 +12,8 @@ export interface Model {
   heroImage: string;
   cardImage: string;
   gallery: string[];
+  // Optional alt text, index-matched to gallery
+  galleryAlt?: string[];
   digitals: string[];
   polaroids: string[];
   // Optional videos — self-hosted mp4 paths or embed URLs
@@ -201,22 +203,34 @@ export const models: Model[] = [
       { label: "Waist", value: "32\"" },
       { label: "Eyes", value: "Brown" },
       { label: "Hair", value: "Brown" },
+      { label: "Facial Hair", value: "Flexible (clean, stubble, full beard with notice)" },
       { label: "Shoe", value: "9.5 / EU43" },
       { label: "Based In", value: "Jacksonville, FL" },
       { label: "Travel", value: "Nationwide + International" },
     ],
-    heroImage: "/models/luis/hero.png",
+    heroImage: "/models/luis/photos/LRamosTest.jpg",
     cardImage: "/models/luis/card.jpg",
     gallery: [
       "/models/luis/photos/LRamosTest.jpg",
-      "/models/luis/photos/LRamosTest_8.jpg",
-      "/models/luis/photos/LRamosTest_19.jpg",
+      "/models/luis/photos/Luis-Ramos-fitness-one-arm-handstand.jpg",
+      "/models/luis/photos/JMIX5785.jpg",
+      "/models/luis/photos/LuisCosmopolitan.jpg",
+      "/models/luis/photos/Luis-Ramos-fitness-kettlebell.jpg",
+      "/models/luis/photos/Luis-Ramos-editorial-bw.jpg",
+      "/models/luis/photos/Luis-Ramos-fitness-sprint.jpg",
       "/models/luis/photos/LRamosTest_20.jpg",
       "/models/luis/photos/LuisRunway.jpg",
-      "/models/luis/photos/image.jpg",
-      "/models/luis/photos/image1.jpg",
-      "/models/luis/photos/LuisCosmopolitan.jpg",
-      "/models/luis/photos/JMIX5785.jpg",
+    ],
+    galleryAlt: [
+      "Luis Ramos, commercial model, Jacksonville FL — smiling in an olive tee while leaning on a table",
+      "Luis Ramos, fitness model, Jacksonville FL — one-arm handstand against a white background",
+      "Luis Ramos, editorial model, Jacksonville FL — patterned blazer and white trousers against a pink background",
+      "Luis Ramos, runway model, Jacksonville FL — walking the Cosmopolitan Japan runway",
+      "Luis Ramos, fitness model, Jacksonville FL — kettlebell deadlift outdoors",
+      "Luis Ramos, editorial model, Jacksonville FL — reading Dressing the Man on a leather sofa",
+      "Luis Ramos, fitness model, Jacksonville FL — high-knee fitness pose beneath a bridge",
+      "Luis Ramos, editorial model, Jacksonville FL — white crop tee with arms behind his head",
+      "Luis Ramos, runway model, Jacksonville FL — pinstripe blazer on the runway",
     ],
     digitals: [
       "/models/luis/digitals/JMIX8902.jpg",
