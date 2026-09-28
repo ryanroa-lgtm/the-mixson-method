@@ -11,6 +11,7 @@ const navLinks = [
   { href: "/press", label: "Press" },
   { href: "/development", label: "Development" },
   { href: "/submissions", label: "Submissions" },
+  { href: "/collaborate", label: "Collaborate" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -30,7 +31,7 @@ export function Navbar() {
         </Link>
 
         {/* Desktop nav */}
-        <ul className="hidden md:flex items-center gap-8 text-sm tracking-widest uppercase font-body">
+        <ul className="hidden lg:flex items-center gap-8 text-sm tracking-widest uppercase font-body">
           {navLinks.map((l) => (
             <li key={l.href}>
               <Link
@@ -46,7 +47,7 @@ export function Navbar() {
         {/* Hamburger button */}
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-[5px]"
+          className="lg:hidden flex flex-col justify-center items-center w-8 h-8 gap-[5px]"
           aria-label="Toggle menu"
         >
           <span
@@ -69,8 +70,8 @@ export function Navbar() {
 
       {/* Mobile menu */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          open ? "max-h-96 border-t border-border" : "max-h-0"
+        className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          open ? "max-h-[32rem] border-t border-border" : "max-h-0"
         }`}
       >
         <ul className="flex flex-col items-center gap-6 py-8 text-sm tracking-widest uppercase font-body">
