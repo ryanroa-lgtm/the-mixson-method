@@ -126,6 +126,9 @@ export function ModelProfile({ model }: { model: Model }) {
                   key={i}
                   src={src}
                   controls
+                  autoPlay
+                  muted
+                  loop
                   playsInline
                   className="w-full"
                 />
