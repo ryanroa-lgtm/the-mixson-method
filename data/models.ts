@@ -123,7 +123,6 @@ export const models: Model[] = [
       "/models/john-l/digitals/JMIX7028.jpg",
       "/models/john-l/digitals/JMIX7034.jpg",
       "/models/john-l/digitals/JMIX7039.jpg",
-      "/models/john-l/digitals/JMIX7050.jpg",
     ],
     polaroids: [],
     videos: [],
