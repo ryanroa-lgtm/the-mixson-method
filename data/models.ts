@@ -556,7 +556,7 @@ export const models: Model[] = [
     ],
     polaroids: [],
     videos: [
-      "/models/jesse-tarr/videos/intro-movement-cut.mp4",
+      "/models/jesse-tarr/videos/intro-lofi-branded.mp4",
       "/models/jesse-tarr/videos/beach-editorial-golden-hour.mp4",
     ],
   },
