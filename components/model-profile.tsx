@@ -60,6 +60,25 @@ export function ModelProfile({ model }: { model: Model }) {
         </div>
       )}
 
+      {/* Press / Featured In */}
+      {model.press && model.press.length > 0 && (
+        <section className="mb-16">
+          <p className="text-xs uppercase tracking-widest text-muted mb-3">
+            Press / Featured In
+          </p>
+          <ul className="space-y-1">
+            {model.press.map((p) => (
+              <li key={`${p.publication}-${p.year}`} className="text-base">
+                {p.publication}, {p.year}
+                {p.photographer && (
+                  <span className="text-muted"> — Photographer: {p.photographer}</span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       {/* Photos */}
       {model.gallery.length > 0 && (
         <section className="mb-16">

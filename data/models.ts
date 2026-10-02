@@ -3,6 +3,12 @@ export interface Stat {
   value: string;
 }
 
+export interface PressFeature {
+  publication: string;
+  year: string;
+  photographer?: string;
+}
+
 export interface Model {
   slug: string;
   name: string;
@@ -23,6 +29,7 @@ export interface Model {
   subtitle?: string;
   bio?: string;
   instagram?: string;
+  press?: PressFeature[];
 }
 
 export const models: Model[] = [
@@ -88,7 +95,11 @@ export const models: Model[] = [
     ],
     heroImage: "/models/john-l/hero.png",
     cardImage: "/models/john-l/card.jpg",
+    press: [
+      { publication: "GMARO Magazine", year: "2026", photographer: "Jordan Mixson" },
+    ],
     gallery: [
+      "/models/john-l/photos/gmaro-2026-key.jpg",
       "/models/john-l/photos/JlivelyTest-2.jpg",
       "/models/john-l/photos/JlivelyTest-8.jpg",
       "/models/john-l/photos/JlivelyTest-14.jpg",
@@ -97,6 +108,9 @@ export const models: Model[] = [
       "/models/john-l/photos/JlivelyTest-48.jpg",
       "/models/john-l/photos/JlivelyTest-53.jpg",
       "/models/john-l/photos/JlivelyTest_1.jpg",
+    ],
+    galleryAlt: [
+      "John L. in GMARO Magazine, 2026, photographed by Jordan Mixson",
     ],
     digitals: [
       "/models/john-l/digitals/JMIX6919.jpg",
