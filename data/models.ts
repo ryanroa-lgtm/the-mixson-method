@@ -30,6 +30,8 @@ export interface Model {
   bio?: string;
   instagram?: string;
   press?: PressFeature[];
+  // Downloadable comp card — replaceable PDF in /public/comp-cards
+  compCard?: string;
 }
 
 export const models: Model[] = [
@@ -95,6 +97,7 @@ export const models: Model[] = [
       { label: "Based In", value: "Buffalo, NY" },
       { label: "Travel", value: "Nationwide" },
     ],
+    compCard: "/comp-cards/john-l.pdf",
     heroImage: "/models/john-l/hero.png",
     cardImage: "/models/john-l/card.jpg",
     press: [
@@ -258,6 +261,35 @@ export const models: Model[] = [
       "/models/luis/digitals/JMIX8961.jpg",
       "/models/luis/digitals/JMIX8971.jpg",
     ],
+    polaroids: [],
+    videos: [],
+  },
+  {
+    slug: "dorvell-ferguson",
+    name: "Dorvell Ferguson",
+    category: "men",
+    instagram: "https://www.instagram.com/trainhardpetdogs/",
+    stats: [
+      { label: "Height", value: "6'4\"" },
+      { label: "Chest", value: "38\"" },
+      { label: "Suit", value: "40L" },
+      { label: "Waist", value: "31\"" },
+      { label: "Eyes", value: "Brown" },
+      { label: "Hair", value: "Black" },
+      { label: "Shoe", value: "12" },
+    ],
+    compCard: "/comp-cards/dorvell-ferguson.pdf",
+    heroImage: "/models/dorvell-ferguson/hero.jpg",
+    cardImage: "/models/dorvell-ferguson/card.jpg",
+    gallery: [
+      "/models/dorvell-ferguson/photos/red-tank.jpg",
+      "/models/dorvell-ferguson/photos/street.jpg",
+      "/models/dorvell-ferguson/photos/brick-wall.jpg",
+      "/models/dorvell-ferguson/photos/runway-bureau.jpg",
+      "/models/dorvell-ferguson/photos/runway-denim.jpg",
+      "/models/dorvell-ferguson/photos/runway-black-tee.jpg",
+    ],
+    digitals: [],
     polaroids: [],
     videos: [],
   },
@@ -523,6 +555,7 @@ export const models: Model[] = [
       { label: "Based In", value: "Miami, FL" },
       { label: "Travel", value: "International" },
     ],
+    compCard: "/comp-cards/jesse-tarr.pdf",
     heroImage: "/models/jesse-tarr/hero.jpg",
     cardImage: "/models/jesse-tarr/hero.jpg",
     gallery: [

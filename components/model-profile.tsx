@@ -60,6 +60,20 @@ export function ModelProfile({ model }: { model: Model }) {
         </div>
       )}
 
+      {/* Comp card download */}
+      {model.compCard && (
+        <div className="-mt-8 mb-16">
+          <a
+            href={model.compCard}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block border border-foreground px-8 py-3 text-sm uppercase tracking-widest hover:bg-foreground hover:text-white transition-colors"
+          >
+            Download Comp Card (PDF)
+          </a>
+        </div>
+      )}
+
       {/* Press / Featured In */}
       {model.press && model.press.length > 0 && (
         <section className="mb-16">
