@@ -380,6 +380,18 @@ export const models: Model[] = [
     polaroids: [],
     videos: [],
   },
+  {
+    slug: "todd-coley",
+    name: "Todd Coley",
+    category: "development",
+    stats: [],
+    heroImage: "/models/todd-coley/hero.jpg",
+    cardImage: "/models/todd-coley/hero.jpg",
+    gallery: [],
+    digitals: [],
+    polaroids: [],
+    videos: ["/models/todd-coley/videos/agency-profile-lofi.mp4"],
+  },
 
   {
     slug: "seif-asi",
