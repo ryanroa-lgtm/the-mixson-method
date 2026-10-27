@@ -812,6 +812,26 @@ export const models: Model[] = [
     polaroids: [],
     videos: [],
   },
+  {
+    slug: "wesley-juall",
+    name: "Wesley Juall",
+    category: "women",
+    stats: [
+      { label: "Height", value: "5'9\"" },
+      { label: "Bust", value: "35\"" },
+      { label: "Waist", value: "28.5\"" },
+      { label: "Hips", value: "41\"" },
+      { label: "Inseam", value: "29\"" },
+      { label: "Dress", value: "6/8" },
+      { label: "Size", value: "S/M" },
+    ],
+    heroImage: "/models/wesley-juall/hero.jpg",
+    cardImage: "/models/wesley-juall/hero.jpg",
+    gallery: [],
+    digitals: [],
+    polaroids: [],
+    videos: [],
+  },
 ];
 
 export function getModelsByCategory(category: "men" | "women" | "development") {
