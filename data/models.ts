@@ -560,6 +560,8 @@ export const models: Model[] = [
       { label: "Chest", value: "46\"" },
       { label: "Waist", value: "38\"" },
       { label: "Hips", value: "47\"" },
+      { label: "Neck", value: "17.5\"" },
+      { label: "Suit", value: "46R" },
       { label: "Inseam", value: "32\"" },
       { label: "Shoe", value: "13" },
       { label: "Hair", value: "Brown" },
