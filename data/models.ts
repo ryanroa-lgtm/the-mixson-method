@@ -393,7 +393,7 @@ export const models: Model[] = [
       { label: "Shoe", value: "13–14" },
     ],
     heroImage: "/models/todd-coley/hero.jpg",
-    cardImage: "/models/todd-coley/hero.jpg",
+    cardImage: "/models/todd-coley/card.jpg",
     gallery: [
       "/models/todd-coley/photos/comp-card.jpg",
       "/models/todd-coley/photos/photo-01.jpg",
@@ -442,7 +442,7 @@ export const models: Model[] = [
     ],
     compCard: "/comp-cards/max-pearton.pdf",
     heroImage: "/models/max-pearton/hero.jpg",
-    cardImage: "/models/max-pearton/hero.jpg",
+    cardImage: "/models/max-pearton/card.jpg",
     gallery: [
       "/models/max-pearton/photos/01-striped-close-portrait.jpg",
       "/models/max-pearton/photos/02-striped-outdoor-full-length.jpg",
